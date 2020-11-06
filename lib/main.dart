@@ -52,9 +52,18 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        leading: InkWell(
+          child: Icon(Icons.menu,color: Colors.black,
+          ),
+          onTap: (){
+            print('menu');
+          },
+        ),
         title: Text(
-          'Main',style: TextStyle(
-          color: Colors.black
+          '철저한 가족',
+          style: TextStyle(
+          color: Colors.black,
+            fontWeight: FontWeight.w700
         ),
         ),
         backgroundColor: Colors.white,
@@ -63,7 +72,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         iconSize: 40,
-        selectedFontSize: 20,
+        selectedFontSize: 15,
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
