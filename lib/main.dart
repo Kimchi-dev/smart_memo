@@ -84,12 +84,12 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
               title: Text('작성'),
               backgroundColor: Colors.lightBlue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
+              icon: Icon(Icons.people),
+              title: Text('다른 모임'),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
+              icon: Icon(Icons.settings),
+              title: Text('설정'),
               backgroundColor: Colors.blueAccent),
         ],
         onTap: (index) {
