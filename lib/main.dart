@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'bottomNavBar/bottomNavHome.dart';
+import 'package:smart_memo/src/ui/bottomNavBar/bottomNavHome.dart';
+import 'package:smart_memo/src/ui/leftSideMenu/leftSideMenu.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,17 +50,14 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
-        centerTitle: true,
-        leading: InkWell(
-          child: Icon(Icons.menu,color: Colors.black,
-          ),
-          onTap: (){
-            print('menu');
-          },
+        iconTheme: IconThemeData(
+          color: Colors.black,
         ),
+        centerTitle: true,
         title: Text(
-          '철저한 가족',
+          '웅덩이',
           style: TextStyle(
           color: Colors.black,
             fontWeight: FontWeight.w700
@@ -70,26 +67,43 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
       ),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(.60),
         currentIndex: _currentIndex,
-        iconSize: 40,
-        selectedFontSize: 15,
+        unselectedFontSize: 14,
+        selectedFontSize: 14,
         items: [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              title: Text('홈'),
+              title: Text('홈',
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+              ),
               backgroundColor: Colors.lightBlueAccent,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.event_note),
-              title: Text('작성'),
+              title: Text('작성',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold
+                ),),
               backgroundColor: Colors.lightBlue),
           BottomNavigationBarItem(
               icon: Icon(Icons.people),
-              title: Text('다른 모임'),
+              title: Text('다른 모임',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold
+                ),),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              title: Text('설정'),
+              title: Text('설정',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold
+                ),),
               backgroundColor: Colors.blueAccent),
         ],
         onTap: (index) {

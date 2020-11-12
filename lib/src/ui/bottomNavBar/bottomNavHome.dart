@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:smart_memo/smo_calendar/smoCalendar.dart';
-import 'package:smart_memo/vo/memodetail.dart';
+import 'package:smart_memo/src/ui/smo_calendar/smoCalendar.dart';
+import 'package:smart_memo/src/vo/memodetail.dart';
+
 
 class BottomNavHome extends StatefulWidget {
   @override
@@ -24,6 +25,8 @@ class _BottomNavHomeState extends State<BottomNavHome> {
   double _moreFormBoxWidth = 0.0;       // 세로
   double _moreDateFormBoxWidth = 0.0;   // 날짜값 필드 가로
   double _moreDateButtonBoxWidth = 0.0; //  버튼 가로
+  double _moreContentWidth = 0.0;
+  double _moreContentHeight =0.0;
 
   int openDuration = 600;               //애니메이션 duration 초기값
 
@@ -77,10 +80,10 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                     controller: _addTodoController,
                   ),
                   AnimatedContainer(
-                    duration: const Duration(milliseconds: 600),
+                    duration: const Duration(milliseconds: 400),
                     height: _moreFormBoxHeight,
                     width: _moreFormBoxWidth,
-                    child: ListView(
+                    child: Column(
                       children: <Widget>[
                         SizedBox(
                           height: 10,
@@ -252,109 +255,24 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                                   width: _moreDateButtonBoxWidth,
                                   height: 40,
                                 ),
+                                AnimatedContainer(
+                                  duration: Duration(milliseconds: openDuration),
+                                  child:  SizedBox(
+                                    height: 5,
+                                  ),
+                                ),
                               ],
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Center(
-                          child: Column(
-                            children: <Widget>[
-                              Text.rich(
-                                  TextSpan(
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: '*바로등록',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          color: Colors.blue,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: '은 제목만 입력이 가능 하지만 , ',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                              Text.rich(
-                                  TextSpan(
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: '*간단등록',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          color: Colors.green,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: '은 최소 날짜를 선택해야합니다.',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                              Text.rich(
-                                  TextSpan(
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text: '*상세등록',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: ' 선택 시 일정 마감일 선택가능',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                              ),
-                              Container(
-                                width: _moreDateButtonBoxWidth+_moreDateFormBoxWidth+20,
-                                child: RaisedButton.icon(
-                                  onPressed: () {
-                                  },
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(15.0))),
-                                  label: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                                    child: Text(
-                                      '상세등록',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  ),
-                                  icon: Icon(
-                                    Icons.playlist_add_check,
-                                    color: Colors.white,
-                                  ),
-                                  textColor: Colors.white,
-                                  splashColor: Colors.red,
-                                  color: Colors.red,
-                                ),
-                              ),
-                            ],
-                          ),
+                        Column(
+                          children: <Widget>[
+                            Container(
+                              width: _moreContentWidth,
+                              height: _moreContentHeight,
+                              child: makeMentBox()
+                            ),
+                          ],
                         )
                       ],
                     ),
@@ -382,7 +300,14 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                                 addColor = Colors.blue;
                                 collapseIcon = Icon(Icons.arrow_drop_down);
                                 collapseString = "+";
-                                openDuration = 400;
+                                openDuration = 100;
+
+                                _moreContentHeight != 0.0
+                                    ? _moreContentHeight = 0.0
+                                    : _moreContentHeight = 114;
+                                _moreContentWidth != 0.0
+                                    ? _moreContentWidth = 0.0
+                                    : _moreContentWidth = 280.0;
                                 _moreDateFormBoxWidth != 0.0
                                     ? _moreDateFormBoxWidth = 0.0
                                     : _moreDateFormBoxWidth = 200;
@@ -404,7 +329,7 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                                 addColor = Colors.green;
                                 collapseIcon = Icon(Icons.arrow_drop_up);
                                 collapseString = "-";
-                                openDuration = 600;
+                                openDuration = 1000;
                                 _moreFormBoxWidth != 0.0
                                     ? _moreFormBoxWidth = 0.0
                                     : _moreFormBoxWidth =
@@ -418,6 +343,12 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                                 _moreDateButtonBoxWidth != 0.0
                                       ? _moreDateButtonBoxWidth = 0.0
                                       : _moreDateButtonBoxWidth = 60;
+                                _moreContentWidth != 0.0
+                                    ? _moreContentWidth = 0.0
+                                    : _moreContentWidth = 280.0;
+                                _moreContentHeight != 0.0
+                                    ? _moreContentHeight = 0.0
+                                    : _moreContentHeight = 114;
                               }
                             });
                           },
@@ -494,6 +425,121 @@ class _BottomNavHomeState extends State<BottomNavHome> {
           ],
         ),
       ),
+    );
+  }
+  Widget makeMentBox(){
+    return Column(
+      children: <Widget>[
+        Container(
+          child: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '*바로등록',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.blue,
+                  ),
+                ),
+                TextSpan(
+                  text: ' : 제목 ',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          width:  _moreContentWidth,
+        ),
+        Container(
+          child: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '*간단등록',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.green,
+                  ),
+                ),
+                TextSpan(
+                  text: '은 최소 날짜를 선택해야합니다.',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black
+                  ),
+                ),
+              ],
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          width:  _moreContentWidth,
+        ),
+        Container(
+          child: RichText(
+            textAlign: TextAlign.left,
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: '*상세등록',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.red,
+                  ),
+                ),
+                TextSpan(
+                  text: ' 선택 시 일정 마감일 선택가능',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.black
+                  ),
+                ),
+              ],
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+          width:  _moreContentWidth,
+        ),
+        Container(
+          child: RaisedButton.icon(
+            onPressed: () {
+
+            },
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.all(Radius.circular(15.0))),
+            label: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 70.0),
+              child: Text(
+                '상세등록',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            icon: Icon(
+              Icons.playlist_add_check,
+              color: Colors.white,
+            ),
+            textColor: Colors.white,
+            splashColor: Colors.deepOrange,
+            color: Colors.red,
+          ),
+        ),
+      ],
     );
   }
 }

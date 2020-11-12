@@ -31,4 +31,8 @@ class Memo{
   set startTimeSet (TimeOfDay smoTime) => _smoStartTime = smoTime;
   set endTimeSet (TimeOfDay smoTime) => _smoEndTime = smoTime;
 
+  @override
+  String toString(){
+    return'[$memo ,$detailMemo ,$startDate ,$endDate ,$startTime ,$endTime]';
+  }
 }
