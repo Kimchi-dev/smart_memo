@@ -7,6 +7,7 @@ class Memo{
   DateTime _smoEndDate;
   TimeOfDay _smoStartTime;
   TimeOfDay _smoEndTime;
+  String _smoTodoType;
 
   get memo => _smoMemo;
   get detailMemo => _smoDetailMemo;
@@ -14,6 +15,7 @@ class Memo{
   get endDate => _smoEndDate;
   get startTime => _smoStartTime;
   get endTime => _smoEndTime;
+  get toDoType => _smoTodoType;
 
   Memo(
   this._smoMemo,
@@ -21,7 +23,8 @@ class Memo{
   this._smoStartDate,
   this._smoEndDate,
   this._smoStartTime,
-  this._smoEndTime
+  this._smoEndTime,
+  this._smoTodoType
   );
 
   set memoSet (String smoMemo) => _smoMemo = smoMemo;
@@ -30,9 +33,9 @@ class Memo{
   set endDateSet (DateTime smoDate) => _smoEndDate = smoDate;
   set startTimeSet (TimeOfDay smoTime) => _smoStartTime = smoTime;
   set endTimeSet (TimeOfDay smoTime) => _smoEndTime = smoTime;
-
+  set smoTypeSet (String smoTodoType) => _smoTodoType = smoTodoType;
   @override
-  String toString(){
+    String toString(){
     return'[$memo ,$detailMemo ,$startDate ,$endDate ,$startTime ,$endTime]';
   }
 }

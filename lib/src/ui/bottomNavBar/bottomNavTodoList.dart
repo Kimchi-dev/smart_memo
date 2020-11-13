@@ -1,10 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smart_memo/src/vo/memodetail.dart';
+import 'package:smart_memo/src/Util/widget_util/CustomWidgetMaker.dart';
 
 class BottomNavTodoList extends StatefulWidget {
+  BottomNavTodoList({Key key, this.title}) : super(key: key);
+  final String title;
   @override
   _BottomNavTodoListState createState() => _BottomNavTodoListState();
 }
@@ -13,45 +15,45 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
   List<Memo> memoList = [];
   List<Widget> widgetList = [];
 
+  @override
+  void initState() {
+    initMemoList();
+    super.initState();
+  }
   void initMemoList() {
-    memoList.add(new Memo('김장', '배추4포기', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
-    memoList.add(new Memo('테이프', '책상용', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
-    memoList.add(new Memo('자석', '', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
-    memoList.add(new Memo('신문지', '40장', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
-    memoList.add(new Memo('빨래', '건조기까지', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
-    memoList.add(new Memo('설거지', '7시에손님', DateTime.now(), DateTime.now(),
-        TimeOfDay.now(), TimeOfDay.now()));
+    memoList = [];
+    widgetList = [];
+    memoList.add(new Memo('김장', '배추4포기 사서 소금에 절여서 대야에 놓기', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo001'));
+    memoList.add(new Memo('테이프', '책상용 박스테이프 구매하기', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo001'));
+    memoList.add(new Memo('빨래', '건조기까지 돌리고 물버리고 먼지비우기', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo002'));
+    memoList.add(new Memo('자석', '달력걸이 자석 구매', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo001'));
+    memoList.add(new Memo('신문지', '40장물에 담가두기 \n (장난감용도)', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo002'));
+    memoList.add(new Memo('설거지', '7시에손님용 접시 사용예정 \n 이라 설거지후 플레이팅준비', DateTime.now(), DateTime.now(),
+        TimeOfDay.now(), TimeOfDay.now(),'todo002'));
+    print('in initState');
   }
 
   Color _buttonPressColor = Colors.blueAccent;
 
+
   @override
   Widget build(BuildContext context) {
+    widgetList = CustomWidgetMaker.memoListToWidget(memoList,context);
     return RefreshIndicator(
       onRefresh: () async {
         Completer<Null> completer = new Completer<Null>();
         await Future.delayed(Duration(seconds: 1)).then((onvalue) {
           initMemoList();
           print('memoList.length : ${memoList.length}');
-          for (Memo memo in memoList)
-            widgetList.add(Column(
-              children: <Widget>[
-                Container(
-                  child: Text('${memo.memo}'),
-                ),
-                Divider(
-                  color: Colors.grey,
-                )
-              ],
-            ));
+
           completer.complete();
           setState(() {
-
+            widgetList = CustomWidgetMaker.memoListToWidget(memoList,context);
           });
           print('widgetList : ${widgetList.length}');
         });
@@ -70,7 +72,14 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
                   focusColor: Colors.black,
                   splashColor: Colors.transparent,
                   highlightColor: HexColor('#18268a'),
-                  onPressed: () {},
+                  onPressed: () {
+                    widgetList = [];
+                    setState(() {
+                      widgetList = CustomWidgetMaker.onlyTypeList(memoList,context,'todo001');
+                      print('widgetList.length = ${widgetList.length}');
+                      print('in setState');
+                    });
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40.0),
                   ),
@@ -114,7 +123,12 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
                   color: Colors.blueAccent,
                   splashColor: Colors.transparent,
                   highlightColor: HexColor('#18268a'),
-                  onPressed: () {},
+                  onPressed: () {
+                    initMemoList();
+                    setState(() {
+                      widgetList = [];
+                    });
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40.0),
                   ),

@@ -77,7 +77,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
         selectedFontSize: 14,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.calendar_today),
               title: Text('홈',
               style: TextStyle(
                 fontWeight: FontWeight.bold
@@ -93,8 +93,8 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
                 ),),
               backgroundColor: Colors.lightBlue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.people),
-              title: Text('다른 모임',
+              icon: Icon(Icons.done_outline),
+              title: Text('완료',
                 style: TextStyle(
                     fontWeight: FontWeight.bold
                 ),),

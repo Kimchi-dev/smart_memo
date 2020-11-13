@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:smart_memo/src/ui/smo_calendar/smoCalendar.dart';
 import 'package:smart_memo/src/vo/memodetail.dart';
-
+import 'file:///C:/Users/Administrator/AndroidStudioProjects/smart_memo/lib/src/Util/fn_util/customFormatter.dart';
 
 class BottomNavHome extends StatefulWidget {
   @override
@@ -17,7 +16,6 @@ class _BottomNavHomeState extends State<BottomNavHome> {
   final _addFormKey = GlobalKey<FormState>();
   DateTime _selectedDate;
   String _selectedTime;
-  DateFormat dateFormat = DateFormat('yy년 MM월 dd일');
   Icon collapseIcon = Icon(Icons.arrow_drop_down);
   String collapseString = "+";
   //상세등록 애니메이션을 위한 위젯 크기
@@ -111,7 +109,7 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                                     child: Text(
                                       _selectedDate == null
                                           ? '날짜를 선택해주세요.'
-                                          : dateFormat.format(_selectedDate),
+                                          : CustomFormatter.dateToKrString(_selectedDate),
                                       style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20,
