@@ -78,47 +78,6 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
                     ),
                     onTap: (){
 
-                      var alertStyle = AlertStyle(
-                        animationType: AnimationType.fromBottom,
-                        isCloseButton: false,
-                        isOverlayTapDismiss: false,
-                        descStyle: TextStyle(fontWeight: FontWeight.bold),
-                        animationDuration: Duration(milliseconds: 240),
-                        alertBorder: RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        titleStyle: TextStyle(
-                          color: Color.fromRGBO(91, 55, 185, 1.0),
-                        ),
-                      );
-
-                      Alert(
-                        context: context,
-                        title: "FilledStacks",
-                        desc: "FilledStacks.com has the best Flutter tutorials",
-                        buttons: [
-                          DialogButton(
-                            child: Text(
-                              "추가",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                            color: Color.fromRGBO(91, 55, 185, 1.0),
-                            radius: BorderRadius.circular(10.0),
-                          ),
-                          DialogButton(
-                            child: Text(
-                              "삭제",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                            color: Color.fromRGBO(91, 55, 185, 1.0),
-                            radius: BorderRadius.circular(10.0),
-                          ),
-                        ],
-                      ).show();
                     },
                   )
                 ],

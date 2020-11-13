@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavHome.dart';
+import 'package:smart_memo/src/ui/bottomNavBar/bottomNavTodoList.dart';
 import 'package:smart_memo/src/ui/leftSideMenu/leftSideMenu.dart';
 
 void main() {
@@ -37,7 +38,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
       child: BottomNavHome(),
     ),
     Center(
-      child: Text('2'),
+      child: BottomNavTodoList(),
     ),
     Center(
       child: Text('3'),
@@ -86,7 +87,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.event_note),
-              title: Text('작성',
+              title: Text('목록',
                 style: TextStyle(
                     fontWeight: FontWeight.bold
                 ),),
