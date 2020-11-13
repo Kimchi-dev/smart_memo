@@ -35,22 +35,23 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
     return RefreshIndicator(
       onRefresh: () async {
         Completer<Null> completer = new Completer<Null>();
-        await Future.delayed(Duration(seconds: 3)).then((onvalue) {
+        await Future.delayed(Duration(seconds: 1)).then((onvalue) {
+          initMemoList();
+          print('memoList.length : ${memoList.length}');
+          for (Memo memo in memoList)
+            widgetList.add(Column(
+              children: <Widget>[
+                Container(
+                  child: Text('${memo.memo}'),
+                ),
+                Divider(
+                  color: Colors.grey,
+                )
+              ],
+            ));
           completer.complete();
           setState(() {
-            widgetList = [];
 
-            for (Memo memo in memoList)
-              widgetList.add(Column(
-                children: <Widget>[
-                  Container(
-                    child: Text('${memo.memo}'),
-                  ),
-                  Divider(
-                    color: Colors.grey,
-                  )
-                ],
-              ));
           });
           print('widgetList : ${widgetList.length}');
         });
