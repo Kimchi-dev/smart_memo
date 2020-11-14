@@ -15,14 +15,8 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
   List<Memo> memoList = [];
   List<Widget> widgetList = [];
 
-  @override
-  void initState() {
-    initMemoList();
-    super.initState();
-  }
   void initMemoList() {
     memoList = [];
-    widgetList = [];
     memoList.add(new Memo('김장', '배추4포기 사서 소금에 절여서 대야에 놓기', DateTime.now(), DateTime.now(),
         TimeOfDay.now(), TimeOfDay.now(),'todo001'));
     memoList.add(new Memo('테이프', '책상용 박스테이프 구매하기', DateTime.now(), DateTime.now(),
@@ -35,15 +29,16 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
         TimeOfDay.now(), TimeOfDay.now(),'todo002'));
     memoList.add(new Memo('설거지', '7시에손님용 접시 사용예정 \n 이라 설거지후 플레이팅준비', DateTime.now(), DateTime.now(),
         TimeOfDay.now(), TimeOfDay.now(),'todo002'));
-    print('in initState');
   }
 
-  Color _buttonPressColor = Colors.blueAccent;
-
+  @override
+  void initState() {
+    initMemoList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    widgetList = CustomWidgetMaker.memoListToWidget(memoList,context);
     return RefreshIndicator(
       onRefresh: () async {
         Completer<Null> completer = new Completer<Null>();
@@ -73,7 +68,6 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
                   splashColor: Colors.transparent,
                   highlightColor: HexColor('#18268a'),
                   onPressed: () {
-                    widgetList = [];
                     setState(() {
                       widgetList = CustomWidgetMaker.onlyTypeList(memoList,context,'todo001');
                       print('widgetList.length = ${widgetList.length}');
@@ -124,9 +118,10 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
                   splashColor: Colors.transparent,
                   highlightColor: HexColor('#18268a'),
                   onPressed: () {
-                    initMemoList();
                     setState(() {
-                      widgetList = [];
+                      widgetList = CustomWidgetMaker.onlyTypeList(memoList,context,'todo002');
+                      print('widgetList.length = ${widgetList.length}');
+                      print('in setState');
                     });
                   },
                   shape: RoundedRectangleBorder(
@@ -171,9 +166,10 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
           for (Widget miniWidget in widgetList)
             Container(
               child: miniWidget,
-            )
+            ),
         ],
       ),
     );
   }
+
 }

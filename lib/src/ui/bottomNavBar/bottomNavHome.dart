@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:smart_memo/src/Util/fn_util/customFormatter.dart';
 import 'package:smart_memo/src/ui/smo_calendar/smoCalendar.dart';
 import 'package:smart_memo/src/vo/memodetail.dart';
-import 'file:///C:/Users/Administrator/AndroidStudioProjects/smart_memo/lib/src/Util/fn_util/customFormatter.dart';
 
 class BottomNavHome extends StatefulWidget {
   @override

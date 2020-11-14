@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:smart_memo/src/vo/memodetail.dart';
@@ -16,7 +15,7 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
   void forMemo(){
     memoList = [];
     for(int i = 0; i < CALENDARWEIGHT; i++){
-      Memo preMemo = new Memo('','',DateTime.now(),DateTime.now(),TimeOfDay.now(),TimeOfDay.now());
+      Memo preMemo = new Memo('','',DateTime.now(),DateTime.now(),TimeOfDay.now(),TimeOfDay.now(),'');
       preMemo.detailMemoSet = '$i';
       preMemo.memoSet = '메모($i)';
       memoList.add(preMemo);
@@ -76,13 +75,9 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
                         color: HexColor('#d5bff3')
                       ),
                     ),
-<<<<<<< Updated upstream
-                    onTap: (){
 
-=======
                     onTap: () {
                       _popupDialog(context);
->>>>>>> Stashed changes
                     },
                   )
                 ],
@@ -93,8 +88,6 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
     );
   }
 
-<<<<<<< Updated upstream
-=======
   void _popupDialog(BuildContext context) {
     showDialog(
         context: context,
@@ -163,7 +156,6 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
         });
   }
 
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return smoCalendarMaker();

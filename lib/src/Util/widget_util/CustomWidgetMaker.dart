@@ -177,7 +177,6 @@ class CustomWidgetMaker{
 
     for (Memo memo in memoList){
         if(memo.toDoType == todoType){
-          print(memo);
           widgetList.add(Column(
             children: <Widget>[
               InkWell(
