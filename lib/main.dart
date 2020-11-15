@@ -14,14 +14,18 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Roboto',
+          textTheme: TextTheme(
+              headline6: TextStyle(fontSize: 15),
+              headline5: TextStyle(fontSize: 18, fontWeight: FontWeight.w700))),
       debugShowCheckedModeBanner: false,
       home: Smart_memo_home(),
     );
   }
 }
 
+// ignore: camel_case_types
 class Smart_memo_home extends StatefulWidget {
   Smart_memo_home({Key key, this.title}) : super(key: key);
 
@@ -31,6 +35,7 @@ class Smart_memo_home extends StatefulWidget {
   _Smart_memo_homeState createState() => _Smart_memo_homeState();
 }
 
+// ignore: camel_case_types
 class _Smart_memo_homeState extends State<Smart_memo_home> {
   int _currentIndex = 0;
   final tabs = [
@@ -59,10 +64,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
         centerTitle: true,
         title: Text(
           '웅덩이',
-          style: TextStyle(
-          color: Colors.black,
-            fontWeight: FontWeight.w700
-        ),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
         ),
         backgroundColor: Colors.white,
       ),
@@ -77,34 +79,33 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
         selectedFontSize: 14,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              title: Text('홈',
-              style: TextStyle(
-                fontWeight: FontWeight.bold
-              ),
-              ),
-              backgroundColor: Colors.lightBlueAccent,
+            icon: Icon(Icons.calendar_today),
+            title: Text(
+              '홈',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.lightBlueAccent,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.event_note),
-              title: Text('목록',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold
-                ),),
+              title: Text(
+                '목록',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               backgroundColor: Colors.lightBlue),
           BottomNavigationBarItem(
               icon: Icon(Icons.done_outline),
-              title: Text('완료',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold
-                ),),
+              title: Text(
+                '완료',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              title: Text('설정',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold
-                ),),
+              title: Text(
+                '설정',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               backgroundColor: Colors.blueAccent),
         ],
         onTap: (index) {
