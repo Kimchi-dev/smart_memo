@@ -9,7 +9,7 @@ class MissionPackAlert extends StatefulWidget {
 class _MissionPackAlertState extends State<MissionPackAlert> {
 
   List<String> contentList = [
-    '브랜치 생성',
+    '브랜치 생성 을하는데 그것은 꼬미가 귀여운 문제이다',
     '코드 수정',
     '수정된파일 커밋',
     '스테이지 푸시',
@@ -55,14 +55,14 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
                   for(int i = 0;i < contentList.length;i++)
                   GestureDetector(
                     onTap: (){
-                      for(int j = 0;j < _selectOrUnselectList.length;j++){
-                          _selectOrUnselectList[j] = false;
-                          if(i == j){
-                            _selectOrUnselectList[i] =true;
-                          }
-                      }
-                      setState(() {
 
+                      setState(() {
+                        _selectOrUnselectList[i] = !_selectOrUnselectList[i] ? true : false;
+                        for(int j = 0;j < _selectOrUnselectList.length;j++){
+                          if(j != i){
+                            _selectOrUnselectList[j] = false;
+                          }
+                        }
                       });
                     },
                     child: AnimatedContainer(
@@ -78,6 +78,7 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 8.0),
                             width: width * 0.6,
+                            height: _selectOrUnselectList[i] ? height * 0.28 : 30.0,
                             child: Text(contentList[i],
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
