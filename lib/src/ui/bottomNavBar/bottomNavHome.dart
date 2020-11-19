@@ -378,48 +378,44 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Center(
-                          child: RaisedButton.icon(
-                            onPressed: () {
-                              if (!isDetailMode) {
-                                //바로등록 모드
-                                print('바로등록');
-                                if (!_addFormKey.currentState.validate()) {
-                                  return;
-                                }
-                                _addFormKey.currentState.save();
-                              } else if (isDetailMode) {
-                                //상세등록 모드
-                                print('간단등록');
+                        child: RaisedButton.icon(
+                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width - 323),
+                          onPressed: () {
+                            if (!isDetailMode) {
+                              //바로등록 모드
+                              print('바로등록');
+                              print(MediaQuery.of(context).size.width);
+                              if (!_addFormKey.currentState.validate()) {
+                                return;
                               }
-                              setState(() {
-                                _toDoText = _addTodoController.text.toString();
-                                print(_toDoText);
-                              });
-                            },
-                            shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(15.0))),
-                            label: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                '$addMode등록',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                            icon: Icon(
-                              Icons.library_add,
+                              _addFormKey.currentState.save();
+                            } else if (isDetailMode) {
+                              //상세등록 모드
+                              print('간단등록');
+                            }
+                            setState(() {
+                              _toDoText = _addTodoController.text.toString();
+                              print(_toDoText);
+                            });
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(15.0))),
+                          label: Text(
+                            '$addMode등록',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 20,
                               color: Colors.white,
                             ),
-                            textColor: Colors.white,
-                            splashColor: Colors.lightGreen,
-                            color: addColor,
                           ),
+                          icon: Icon(
+                            Icons.library_add,
+                            color: Colors.white,
+                          ),
+                          textColor: Colors.white,
+                          splashColor: Colors.lightGreen,
+                          color: addColor,
                         ),
                       ),
                     ],
