@@ -14,6 +14,9 @@ class CustomWidgetMaker{
     }else if(todoCode == 'todo002'){
       chTodoString = "해요";
       chTodoColor = Colors.blue;
+    }else if(todoCode == 'todo003'){
+      chTodoString = "미션팩";
+      chTodoColor = Colors.black;
     }
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8.0),
@@ -90,8 +93,8 @@ class CustomWidgetMaker{
                       child: Column(
                         children: <Widget>[
                           Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            width: MediaQuery.of(context).size.width * 0.59,
+                            padding: EdgeInsets.only(left: 16.0),
                             child: Text(
                               '${memo.memo}',
                               textAlign: TextAlign.left,
@@ -104,7 +107,7 @@ class CustomWidgetMaker{
                           ),
                           Container(
                             width: MediaQuery.of(context).size.width * 0.5,
-                            padding: EdgeInsets.symmetric(horizontal: 20.0),
+                            padding: EdgeInsets.only(left: 20.0),
                             child: Text(
                               '${memo.detailMemo}',
                               textAlign: TextAlign.left,
@@ -122,7 +125,6 @@ class CustomWidgetMaker{
                       children: <Widget>[
                         CustomWidgetMaker.getBuyOrTodo(memo.toDoType),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
                             CustomFormatter.dateToHyphenString(
                                 memo.startDate),
@@ -251,6 +253,7 @@ class CustomWidgetMaker{
                                   '${memo.detailMemo}',
                                   textAlign: TextAlign.left,
                                   overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
