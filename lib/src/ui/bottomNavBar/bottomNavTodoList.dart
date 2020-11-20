@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:smart_memo/src/Util/fn_util/customFormatter.dart';
 import 'package:smart_memo/src/ui/toDoList/missionPackAlert.dart';
 import 'package:smart_memo/src/vo/memodetail.dart';
@@ -18,7 +17,6 @@ class BottomNavTodoList extends StatefulWidget {
 class _BottomNavTodoListState extends State<BottomNavTodoList> {
   List<Memo> memoList = [];
   List<Widget> widgetList = [];
-  var _booltf = false;
 
   void initMemoList() {
     memoList = [];

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:smart_memo/src/ui/toDoList/missionPackMission.dart';
 class MissionPackAlert extends StatefulWidget {
   @override
   _MissionPackAlertState createState() => _MissionPackAlertState();
@@ -9,7 +10,7 @@ class MissionPackAlert extends StatefulWidget {
 class _MissionPackAlertState extends State<MissionPackAlert> {
 
   List<String> contentList = [
-    '브랜치 생성 을하는데 그것은 꼬미가 귀여운 문제이다',
+    '브랜치 생성',
     '코드 수정',
     '수정된파일 커밋',
     '스테이지 푸시',
@@ -30,11 +31,27 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
       title: Container(
         padding: EdgeInsets.symmetric(
             horizontal: 16.0, vertical: 5),
-        child: Text(
-          '깃 브랜치 작업',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+        child: Column(
+          children: <Widget>[
+            Text(
+              '깃 브랜치 작업',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 5),
+              width: 300,
+              height: 20,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: LinearProgressIndicator(
+                  value: 0.4622,
+                  backgroundColor: Colors.grey,
+                ),
+              ),
+            ),
+          ],
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
@@ -53,56 +70,7 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
               child: ListBody(
                 children: <Widget>[
                   for(int i = 0;i < contentList.length;i++)
-                  GestureDetector(
-                    onTap: (){
-
-                      setState(() {
-                        _selectOrUnselectList[i] = !_selectOrUnselectList[i] ? true : false;
-                        for(int j = 0;j < _selectOrUnselectList.length;j++){
-                          if(j != i){
-                            _selectOrUnselectList[j] = false;
-                          }
-                        }
-                      });
-                    },
-                    child: AnimatedContainer(
-                      height: _selectOrUnselectList[i] ? height * 0.3 : 30.0,
-                      width: double.infinity,
-                      duration: Duration(milliseconds: 400),
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Row(
-                        children: <Widget>[
-                          Icon(Icons.done,
-                            color: Colors.green,
-                          ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            width: width * 0.6,
-                            height: _selectOrUnselectList[i] ? height * 0.28 : 30.0,
-                            child: Text(contentList[i],
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      margin: EdgeInsets.all(10.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 5,
-                              blurRadius: 7,
-                              offset: Offset(0,2),
-                            )
-                          ]
-                      ),
-
-                    ),
-                  ),
+                      MissionPackMission(contentList[i]),
                 ],
               ),
             ),
@@ -110,6 +78,7 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
         },
       ),
       actions: <Widget>[
+
         DialogButton(
           child: Text(
             "확인",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavHome.dart';
+import 'package:smart_memo/src/ui/bottomNavBar/bottomNavSetting.dart';
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavTodoList.dart';
 import 'package:smart_memo/src/ui/leftSideMenu/leftSideMenu.dart';
 
@@ -49,7 +50,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
       child: Text('3'),
     ),
     Center(
-      child: Text('4'),
+      child: BottomNavSetting(),
     ),
   ];
 
