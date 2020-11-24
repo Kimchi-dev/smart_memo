@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavHome.dart';
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavSetting.dart';
@@ -13,8 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'flutter Demo',
-      theme: ThemeData(
+        title: 'flutter Demo',
+          theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'Roboto',
           textTheme: TextTheme(
@@ -58,16 +59,16 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(40.0),
+        child: AppBar(
+          centerTitle: true,
+          title: Text(
+            '',
+            style: TextStyle( fontWeight: FontWeight.w700),
+          ),
+          backgroundColor: HexColor("#af40e8"),
         ),
-        centerTitle: true,
-        title: Text(
-          '웅덩이',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
-        ),
-        backgroundColor: Colors.white,
       ),
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -76,8 +77,8 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withOpacity(.60),
         currentIndex: _currentIndex,
-        unselectedFontSize: 14,
-        selectedFontSize: 14,
+        unselectedFontSize: 0,
+        selectedFontSize: 0,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),

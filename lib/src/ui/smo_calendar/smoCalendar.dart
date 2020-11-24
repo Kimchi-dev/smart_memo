@@ -54,7 +54,7 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
           Container(
             height: MediaQuery.of(context).size.height * 0.44,
             //only size check
-            color: Colors.lightBlueAccent,
+            color: Colors.white,
             child: GridView.count(
               crossAxisCount: 7,
               children: <Widget>[
@@ -69,14 +69,13 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
-                              color: Colors.black54),
+                              color: Colors.deepPurpleAccent),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
-                          //color: HexColor('#d5bff3')
-                        color: Colors.white
+                         color: HexColor('#ffdbf4'),
                         ),
                     ),
                     onTap: () {

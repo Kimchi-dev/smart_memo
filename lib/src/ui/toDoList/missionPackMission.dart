@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:smart_memo/src/ui/toDoList/missionDetail.dart';
 
 class MissionPackMission extends StatefulWidget {
   final String content;
+
   const MissionPackMission(this.content);
+
   @override
   _MissionPackMissionState createState() => _MissionPackMissionState();
 }
 
 class _MissionPackMissionState extends State<MissionPackMission> {
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
 
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => MissionDetail()
-        ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MissionDetail()),
         );
       },
       child: Container(
-        height:  30.0,
+        height: 30.0,
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         child: Row(
           children: <Widget>[
             IconButton(
-              onPressed: (){
-
-              },
+              onPressed: () {},
               padding: EdgeInsets.zero,
-              icon: Icon(Icons.check
-              ),
+              icon: widget.content.length < 6
+                  ? Icon(Icons.check,color: HexColor("##d6d6d6"),)
+                  : Icon(Icons.done,color: Colors.green,),
               color: Colors.grey,
             ),
-            Container (
-              padding: EdgeInsets.symmetric(horizontal: 8.0,vertical: 4.0),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               width: width * 0.5,
               height: 30.0,
               child: Text(
@@ -58,11 +59,9 @@ class _MissionPackMissionState extends State<MissionPackMission> {
                 color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0,2),
+                offset: Offset(0, 2),
               )
-            ]
-        ),
-
+            ]),
       ),
     );
   }

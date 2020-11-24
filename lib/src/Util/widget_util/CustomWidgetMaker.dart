@@ -234,8 +234,9 @@ class CustomWidgetMaker{
                           child: Column(
                             children: <Widget>[
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                                width:
+                                MediaQuery.of(context).size.width * 0.59,
+                                padding: EdgeInsets.only(left: 16.0),
                                 child: Text(
                                   '${memo.memo}',
                                   textAlign: TextAlign.left,
@@ -247,8 +248,9 @@ class CustomWidgetMaker{
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                width:
+                                MediaQuery.of(context).size.width * 0.5,
+                                padding: EdgeInsets.only(left: 20.0),
                                 child: Text(
                                   '${memo.detailMemo}',
                                   textAlign: TextAlign.left,
@@ -267,7 +269,6 @@ class CustomWidgetMaker{
                           children: <Widget>[
                             CustomWidgetMaker.getBuyOrTodo(memo.toDoType),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
                                 CustomFormatter.dateToHyphenString(
                                     memo.startDate),

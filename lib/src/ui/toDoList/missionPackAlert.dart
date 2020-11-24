@@ -10,12 +10,12 @@ class MissionPackAlert extends StatefulWidget {
 class _MissionPackAlertState extends State<MissionPackAlert> {
 
   List<String> contentList = [
-    '브랜치 생성',
-    '코드 수정',
-    '수정된파일 커밋',
-    '스테이지 푸시',
-    '풀리퀘스트',
-    '머지'
+    '꼬미랑 아침산책',
+    '설거지',
+    '세탁기 돌리고 건조기 물비우기',
+    '바닥청소 물걸레까지',
+    '융정가와 고스톱치기',
+    '잘준비'
   ];
   List<bool> _selectOrUnselectList = [false,false,false,false,false,false];
 
@@ -34,7 +34,7 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
         child: Column(
           children: <Widget>[
             Text(
-              '깃 브랜치 작업',
+              '융정가와 미션 (4 / 6)',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -46,7 +46,7 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: LinearProgressIndicator(
-                  value: 0.4622,
+                  value: 4 / 6,
                   backgroundColor: Colors.grey,
                 ),
               ),
@@ -64,14 +64,27 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
           var height = MediaQuery.of(context).size.height;
           var width = MediaQuery.of(context).size.width;
           var _selectedContainerHeight = 0.0;
-          return Container(
-            height: height * 0.5,
-            child: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[
-                  for(int i = 0;i < contentList.length;i++)
-                      MissionPackMission(contentList[i]),
-                ],
+          return RefreshIndicator(
+            onRefresh: () async{
+              await Future.delayed(Duration(seconds: 1)).then((onvalue) {
+
+                setState(() {
+                  print('a');
+                });
+              });
+            },
+            child: Container(
+              height: height * 0.5,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+                child: ListBody(
+                  children: <Widget>[
+                    for(int i = 0;i < contentList.length;i++)
+                        MissionPackMission(contentList[i]),
+                  ],
+                ),
               ),
             ),
           );
