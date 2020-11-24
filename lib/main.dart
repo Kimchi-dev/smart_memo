@@ -17,10 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'flutter Demo',
           theme: ThemeData(
           primarySwatch: Colors.blue,
-          fontFamily: 'Roboto',
-          textTheme: TextTheme(
-              headline6: TextStyle(fontSize: 15),
-              headline5: TextStyle(fontSize: 18, fontWeight: FontWeight.w700))),
+          ),
       debugShowCheckedModeBanner: false,
       home: Smart_memo_home(),
     );

@@ -91,7 +91,18 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
         },
       ),
       actions: <Widget>[
+        DialogButton(
+          child: Text(
+            "수정",
+            style: TextStyle(
+                color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () {
 
+          },
+          color: Colors.blueAccent,
+          radius: BorderRadius.circular(10.0),
+        ),
         DialogButton(
           child: Text(
             "확인",
@@ -103,6 +114,6 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
           radius: BorderRadius.circular(10.0),
         ),
       ],
-    );;
+    );
   }
 }

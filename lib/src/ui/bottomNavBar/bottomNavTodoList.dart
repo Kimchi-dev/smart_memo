@@ -56,223 +56,228 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
           print('widgetList : ${widgetList.length}');
         });
       },
-      child: SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(
-          parent: BouncingScrollPhysics(),
-        ),
-        child: ListBody(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  FlatButton(
-                    color: Colors.blueAccent,
-                    focusColor: Colors.black,
-                    splashColor: Colors.transparent,
-                    highlightColor: HexColor('#18268a'),
-                    onPressed: () {
-                      setState(() {
-                        widgetList = CustomWidgetMaker.onlyTypeList(
-                            memoList, context, 'todo001');
-                      });
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                    ),
-                    child: Container(
-                      height: 200,
-                      width: 130,
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '사야 해',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '999',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '개 의 살일',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+      child: Container(
+        color: Colors.white,
+        height: double.infinity,
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics(),
+          ),
+          child: ListBody(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                      color: Colors.blueAccent,
+                      focusColor: Colors.black,
+                      splashColor: Colors.transparent,
+                      highlightColor: HexColor('#18268a'),
+                      onPressed: () {
+                        setState(() {
+                          widgetList = CustomWidgetMaker.onlyTypeList(
+                              memoList, context, 'todo001');
+                        });
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  FlatButton(
-                    color: Colors.blueAccent,
-                    splashColor: Colors.transparent,
-                    highlightColor: HexColor('#18268a'),
-                    onPressed: () {
-                      setState(() {
-                        widgetList = CustomWidgetMaker.onlyTypeList(
-                            memoList, context, 'todo002');
-                        print('widgetList.length = ${widgetList.length}');
-                        print('in setState');
-                      });
-                    },
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40.0),
-                    ),
-                    child: Container(
-                      height: 200,
-                      width: 130,
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '해야 해',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '999',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 70,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '개 의 할일',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            for (Widget miniWidget in widgetList)
-              Container(
-                child: miniWidget,
-              ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return MissionPackAlert();
-                          });
-                    },
-                    child: Column(
-                      children: <Widget>[
-                        Row(
+                      child: Container(
+                        height: 200,
+                        width: 130,
+                        child: Column(
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.59,
-                                    padding: EdgeInsets.only(left: 16.0),
-                                    child: Text(
-                                      '융정가 명령잉니다',
-                                      textAlign: TextAlign.left,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                            Text(
+                              '사야 해',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '999',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 70,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '개 의 살일',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    FlatButton(
+                      color: Colors.blueAccent,
+                      splashColor: Colors.transparent,
+                      highlightColor: HexColor('#18268a'),
+                      onPressed: () {
+                        setState(() {
+                          widgetList = CustomWidgetMaker.onlyTypeList(
+                              memoList, context, 'todo002');
+                          print('widgetList.length = ${widgetList.length}');
+                          print('in setState');
+                        });
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
+                      child: Container(
+                        height: 200,
+                        width: 130,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              '해야 해',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '999',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 70,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              '개 의 할일',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              for (Widget miniWidget in widgetList)
+                Container(
+                  child: miniWidget,
+                ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return MissionPackAlert();
+                            });
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      width:
+                                          MediaQuery.of(context).size.width * 0.59,
+                                      padding: EdgeInsets.only(left: 16.0),
+                                      child: Text(
+                                        '융정가 명령잉니다',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
-                                  ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
-                                    padding: EdgeInsets.only(left: 20.0),
-                                    child: Text(
-                                      '6단계의 미션팩입니다.',
-                                      textAlign: TextAlign.left,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
+                                    Container(
+                                      width:
+                                          MediaQuery.of(context).size.width * 0.5,
+                                      padding: EdgeInsets.only(left: 20.0),
+                                      child: Text(
+                                        '6단계의 미션팩입니다.',
+                                        textAlign: TextAlign.left,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                        ),
                                       ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Column(
+                                children: <Widget>[
+                                  CustomWidgetMaker.getBuyOrTodo('todo003'),
+                                  Container(
+                                    child: Text(
+                                      CustomFormatter.dateToHyphenString(
+                                          new DateTime(2020, 11, 21)),
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.grey),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                            Column(
-                              children: <Widget>[
-                                CustomWidgetMaker.getBuyOrTodo('todo003'),
-                                Container(
+                              Container(
+                                width: 70,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: FlatButton(
+                                  padding: EdgeInsets.zero,
                                   child: Text(
-                                    CustomFormatter.dateToHyphenString(
-                                        new DateTime(2020, 11, 21)),
-                                    textAlign: TextAlign.left,
+                                    '66.6%',
                                     style: TextStyle(
-                                        fontSize: 14, color: Colors.grey),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: Colors.white),
                                   ),
+                                  onPressed: () {},
                                 ),
-                              ],
-                            ),
-                            Container(
-                              width: 70,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              child: FlatButton(
-                                child: Text(
-                                  '처리',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                      color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              ),
-                            )
-                          ],
-                        ),
-                      ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4),
-                    child: Divider(
-                      color: Colors.grey,
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4),
+                      child: Divider(
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

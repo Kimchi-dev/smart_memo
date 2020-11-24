@@ -379,7 +379,7 @@ class _BottomNavHomeState extends State<BottomNavHome> {
                       Container(
                         margin: EdgeInsets.symmetric(horizontal: 8.0),
                         child: RaisedButton.icon(
-                          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width - 323),
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
                           onPressed: () {
                             if (!isDetailMode) {
                               //바로등록 모드
