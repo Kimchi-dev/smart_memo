@@ -130,8 +130,6 @@ class _BottomNavTodoListState extends State<BottomNavTodoList> {
                         setState(() {
                           widgetList = CustomWidgetMaker.onlyTypeList(
                               memoList, context, 'todo002');
-                          print('widgetList.length = ${widgetList.length}');
-                          print('in setState');
                         });
                       },
                       shape: RoundedRectangleBorder(

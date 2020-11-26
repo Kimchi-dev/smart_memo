@@ -3,30 +3,35 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
+// ignore: must_be_immutable
 class ShowImage extends StatefulWidget {
-
+  ShowImage({Key key,@required this.initialIndex}) : super(key : key);
+  int initialIndex;
 
   @override
-  _ShowImageState createState() => _ShowImageState();
+  _ShowImageState createState() => _ShowImageState(initialIndex);
 }
 
 class _ShowImageState extends State<ShowImage> {
   final imageList = [
     'https://mblogthumb-phinf.pstatic.net/MjAxODA0MjRfNDkg/MDAxNTI0NTM2NjAwNTQw.IddxA8-dF1o5mTaOwiJqesGQwyEDYYXYiYKmdV-WSMUg.1Rm40HP8qmd2PMAVhm5cyKtlHeifbI2GSnT6FTOncJsg.JPEG.dmm_korea/%ED%92%8D%EA%B2%BD%EC%98%81%EC%96%B4%EB%A1%9C_%EC%97%94%EA%B5%AC%ED%99%94%EC%83%81%EC%98%81%EC%96%B41.jpg?type=w800',
-    'https://lh3.googleusercontent.com/proxy/hkdZfhGGns02eFbpbaHxDIw14FKYQxuggW_pj1gHK4szjR1Y9doG5cYQzqicD8BpBEXee_05wx_1QNgT_JsorsQXB-2yfLmi_5Hv1A0li7DBeDU',
     'https://i.pinimg.com/736x/5f/f3/d7/5ff3d71b5834971c30af475c99f67c02.jpg',
     'https://www.sjpost.co.kr/news/photo/202007/53199_48342_4214.jpg',
     'https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png',
     'https://ojsfile.ohmynews.com/STD_IMG_FILE/2016/0516/IE001963941_STD.jpg'
   ];
-
-  var _pageController = PageController();
+  _ShowImageState(this.requestIndex);
+  int requestIndex;
+  var _pageController = PageController(initialPage: temp);
   int _currentIndex ;
   int _totalIndex;
+  static int temp;
   @override
   void initState() {
+    print(temp);
     _currentIndex = _pageController.initialPage+1;
     _totalIndex = imageList.length;
+    temp = requestIndex;
     super.initState();
   }
   @override
@@ -62,7 +67,7 @@ class _ShowImageState extends State<ShowImage> {
                     ),
                     initialScale: PhotoViewComputedScale.contained * 0.9,
                     minScale: PhotoViewComputedScale.contained * 0.9 ,
-                    maxScale: PhotoViewComputedScale.covered * 1.6
+                    maxScale: PhotoViewComputedScale.covered * 1.6,
                 );
               },
               scrollPhysics: BouncingScrollPhysics(),
@@ -78,12 +83,16 @@ class _ShowImageState extends State<ShowImage> {
                   ),
                 ),
               ),
+
               onPageChanged: (index){
                 setState(() {
                   _currentIndex = index+1;
+
                 });
               },
-              
+              scrollDirection: Axis.vertical,
+
+              enableRotation: true,
             ),
           ),
         ),
