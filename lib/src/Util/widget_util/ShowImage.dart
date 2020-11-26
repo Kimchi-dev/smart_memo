@@ -20,18 +20,19 @@ class _ShowImageState extends State<ShowImage> {
     'https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png',
     'https://ojsfile.ohmynews.com/STD_IMG_FILE/2016/0516/IE001963941_STD.jpg'
   ];
+
   _ShowImageState(this.requestIndex);
-  int requestIndex;
-  var _pageController = PageController(initialPage: temp);
+  var _pageController;
+  final int requestIndex;
   int _currentIndex ;
   int _totalIndex;
-  static int temp;
+
+
   @override
   void initState() {
-    print(temp);
+     _pageController = PageController(initialPage: requestIndex);
     _currentIndex = _pageController.initialPage+1;
     _totalIndex = imageList.length;
-    temp = requestIndex;
     super.initState();
   }
   @override
