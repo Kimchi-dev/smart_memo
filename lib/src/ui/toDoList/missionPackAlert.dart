@@ -17,7 +17,6 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
     '융정가와 고스톱치기',
     '잘준비'
   ];
-  List<bool> _selectOrUnselectList = [false,false,false,false,false,false];
 
   @override
   Widget build(BuildContext context) {
@@ -91,18 +90,6 @@ class _MissionPackAlertState extends State<MissionPackAlert> {
         },
       ),
       actions: <Widget>[
-        DialogButton(
-          child: Text(
-            "수정",
-            style: TextStyle(
-                color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () {
-
-          },
-          color: Colors.blueAccent,
-          radius: BorderRadius.circular(10.0),
-        ),
         DialogButton(
           child: Text(
             "확인",

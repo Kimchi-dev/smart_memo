@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:smart_memo/src/Util/fn_util/customFormatter.dart';
+import 'package:smart_memo/src/Util/fn_util/CustomFormatter.dart';
 import 'package:smart_memo/src/ui/toDoList/missionPackAlert.dart';
-import 'package:smart_memo/src/vo/memodetail.dart';
+import 'package:smart_memo/src/vo/MemoDetail.dart';
 import 'package:smart_memo/src/Util/widget_util/CustomWidgetMaker.dart';
 
 class BottomNavTodoList extends StatefulWidget {

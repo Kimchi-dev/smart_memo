@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:smart_memo/src/vo/memodetail.dart';
+import 'package:smart_memo/src/vo/MemoDetail.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SmartMemoCalendar extends StatefulWidget {
@@ -19,17 +19,15 @@ class _SmartMemoCalendarState extends State<SmartMemoCalendar> {
     for (int i = 0; i < CALENDARWEIGHT; i++) {
       Memo preMemo = new Memo('', '', DateTime.now(), DateTime.now(),
           TimeOfDay.now(), TimeOfDay.now(), '');
-      preMemo.detailMemoSet = '$i';
-      preMemo.memoSet = '메모($i)';
+      preMemo.detailMemo = '$i';
+      preMemo.memo = '메모($i)';
       memoList.add(preMemo);
     }
   }
 
   Widget smoCalendarMaker() {
-    print('in smoCalendarMaker() ');
     forMemo();
     int a = memoList.length;
-    print('memoList.length => $a');
     var dayList = ['일', '월', '화', '수', '목', '금', '토'];
     return Center(
       child: Column(

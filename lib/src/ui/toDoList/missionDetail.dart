@@ -130,7 +130,7 @@ class _MissionDetailState extends State<MissionDetail> {
                             onTap: () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
-                                return ShowImage(initialIndex: i,);
+                                return ShowImage(initialIndex: i,imageList: imageList,);
                               }));
                             },
                           ),

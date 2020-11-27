@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class NavDrawer extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -10,11 +11,22 @@ class NavDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text(
-              '꼬미러버 님',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 25,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Container(padding: EdgeInsets.symmetric(vertical: 5.0,horizontal: 16.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: Colors.black.withOpacity(0.6),
+                  //color: Colors.black.withAlpha(100),
+                ),
+                child: Text(
+                  '꼬미러버'+' 님',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
               ),
             ),
             decoration: BoxDecoration(

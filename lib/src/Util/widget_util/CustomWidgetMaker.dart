@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:smart_memo/src/Util/fn_util/customFormatter.dart';
-import 'package:smart_memo/src/vo/memodetail.dart';
+import 'package:smart_memo/src/Util/fn_util/CustomFormatter.dart';
+import 'package:smart_memo/src/vo/MemoDetail.dart';
 
 class CustomWidgetMaker{
 

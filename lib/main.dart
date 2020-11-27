@@ -54,64 +54,66 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: NavDrawer(),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40.0),
-        child: AppBar(
-          centerTitle: true,
-          title: Text(
-            '',
-            style: TextStyle( fontWeight: FontWeight.w700),
-          ),
-          backgroundColor: HexColor("#af40e8"),
-        ),
-      ),
-      body: tabs[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.grey,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white.withOpacity(.60),
-        currentIndex: _currentIndex,
-        unselectedFontSize: 0,
-        selectedFontSize: 0,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
+    return SafeArea(
+          child: Scaffold(
+        drawer: NavDrawer(),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            centerTitle: true,
             title: Text(
-              '홈',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              '',
+              style: TextStyle( fontWeight: FontWeight.w700),
             ),
-            backgroundColor: Colors.lightBlueAccent,
+            backgroundColor: HexColor("#af40e8"),
           ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.event_note),
+        ),
+        body: tabs[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.grey,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white.withOpacity(.60),
+          currentIndex: _currentIndex,
+          unselectedFontSize: 0,
+          selectedFontSize: 0,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
               title: Text(
-                '목록',
+                '홈',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              backgroundColor: Colors.lightBlue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.done_outline),
-              title: Text(
-                '완료',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              backgroundColor: Colors.blue),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text(
-                '설정',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              backgroundColor: Colors.blueAccent),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+              backgroundColor: Colors.lightBlueAccent,
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.event_note),
+                title: Text(
+                  '목록',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.lightBlue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.done_outline),
+                title: Text(
+                  '완료',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.blue),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                title: Text(
+                  '설정',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.blueAccent),
+          ],
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
       ),
     );
   }
