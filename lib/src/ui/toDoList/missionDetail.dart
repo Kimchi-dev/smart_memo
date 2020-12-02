@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smart_memo/src/Util/widget_util/ShowImage.dart';
+import 'package:swipe_to/swipe_to.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import 'EditContentAlert.dart';
 
 class MissionDetail extends StatefulWidget {
   @override
@@ -19,6 +23,7 @@ class _MissionDetailState extends State<MissionDetail> {
 
   @override
   Widget build(BuildContext context) {
+    SlidableController _slidableController;
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -56,86 +61,161 @@ class _MissionDetailState extends State<MissionDetail> {
                 physics: AlwaysScrollableScrollPhysics(
                   parent: BouncingScrollPhysics(),
                 ),
-                child: ListBody(
+                child: Column(
                   children: <Widget>[
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      margin: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 16.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: HexColor("#e1e4ea"),
-                      ),
-                      child: Text(
-                        '제목',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                    ),
-                    Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: HexColor("#e1e4ea"),
-                      ),
-                      child: Container(
-                        child: Text(
-                          '내용 내용 내용 내용 '
-                          '내용 내용 내용 내용 내용 내용 내용 '
-                          '내용 내용 내용 내용 내용 내용 내용 '
-                          '내용 내용 내용 내용 내용 내용 내용 '
-                          '내용 내용 내용 내용 내용 내용 내용 ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
-                        ),
-                      ),
-                    ),
-                    Row(children: <Widget>[
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Divider(
-                          color: Colors.grey,
-                        ),
-                      )),
-                      Text(
-                        "해결내용",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Divider(
-                          color: Colors.grey,
-                        ),
-                      )),
-                    ]),
-                    for (int i = 0;i < imageList.length;i++)
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 16.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: InkWell(
-                            child: FadeInImage.memoryNetwork(
-                              placeholder: kTransparentImage,
-                              image: imageList[i],
-                            ),
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return ShowImage(initialIndex: i,imageList: imageList,);
-                              }));
-                            },
+                    ListBody(
+                      children: <Widget>[
+                        Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 16.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.0),
+                            color: HexColor("#e1e4ea"),
+                          ),
+                          child: Text(
+                            '제목',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                         ),
-                      ),
+                        Slidable(
+                          actionPane: SlidableDrawerActionPane(),
+                          actionExtentRatio: 0.25,
+                          controller: _slidableController,
+                          actions: <Widget>[
+                            IconSlideAction(
+                              caption: '다른사진',
+                              color: Colors.blue,
+                              icon: Icons.photo,
+                              onTap: () {
+
+                              },
+                            ),
+                            IconSlideAction(
+                              caption: '새로운 사진',
+                              color: Colors.blueAccent,
+                              icon: Icons.camera_alt,
+                              onTap: () {
+
+                              },
+                            ),
+                          ],
+                          secondaryActions: <Widget>[
+                            IconSlideAction(
+                              caption: 'Delete',
+                              color: Colors.red,
+                              icon: Icons.delete,
+                              onTap: (){
+                              },
+                            ),
+                          ],
+                          child: Container(
+                            padding:
+                                EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                            margin:
+                                EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30.0),
+                              color: HexColor("#e1e4ea"),
+                            ),
+                            child: Container(
+                              child: Text(
+                                '내용 내용 내용 내용 '
+                                '내용 내용 내용 내용 내용 내용 내용 '
+                                '내용 내용 내용 내용 내용 내용 내용 '
+                                '내용 내용 내용 내용 내용 내용 내용 '
+                                '내용 내용 내용 내용 내용 내용 내용 ',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(children: <Widget>[
+                          Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                child: Divider(
+                                  color: Colors.grey,
+                                ),
+                          )),
+                          Text(
+                            "해결내용",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                child: Divider(
+                              color: Colors.grey,
+                            ),
+                          )),
+                        ]),
+                        for (int i = 0;i < imageList.length;i++)
+                          Slidable(
+                            actionPane: SlidableDrawerActionPane(),
+                            actionExtentRatio: 0.25,
+                            controller: _slidableController,
+                            actions: <Widget>[
+                              IconSlideAction(
+                                caption: '다른사진',
+                                color: Colors.blue,
+                                icon: Icons.photo,
+                                onTap: () {
+
+                                },
+                              ),
+                              IconSlideAction(
+                                caption: '새로운 사진',
+                                color: Colors.blueAccent,
+                                icon: Icons.camera_alt,
+                                onTap: () {
+
+                                },
+                              ),
+                            ],
+                            secondaryActions: <Widget>[
+                              IconSlideAction(
+                                caption: 'Delete',
+                                color: Colors.red,
+                                icon: Icons.delete,
+                                onTap: (){
+                                  setState(() {
+                                    imageList.removeAt(i);
+                                  });
+                                },
+                              ),
+                            ],
+
+                            closeOnScroll: true,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.0, horizontal: 16.0),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20.0),
+                                child: InkWell(
+                                  child: FadeInImage.memoryNetwork(
+                                    height: 200,
+                                    placeholder: kTransparentImage,
+                                    image: imageList[i],
+                                    fit: BoxFit.none,
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return ShowImage(initialIndex: i,imageList: imageList,);
+                                    }));
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   ],
                 ),
               ),
