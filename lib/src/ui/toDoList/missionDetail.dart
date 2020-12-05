@@ -24,6 +24,7 @@ class _MissionDetailState extends State<MissionDetail> {
   @override
   Widget build(BuildContext context) {
     SlidableController _slidableController;
+    double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -34,6 +35,14 @@ class _MissionDetailState extends State<MissionDetail> {
                   Navigator.pop(context);
                 },
                 child: Icon(Icons.arrow_back_ios)),
+            actions: [
+              IconButton(
+                onPressed: (){
+
+                },
+                icon: Icon(Icons.add),
+              )
+            ],
             backgroundColor: HexColor("#af40e8"),
             title: Text(
               '미션 정보',
@@ -86,17 +95,9 @@ class _MissionDetailState extends State<MissionDetail> {
                           controller: _slidableController,
                           actions: <Widget>[
                             IconSlideAction(
-                              caption: '다른사진',
+                              caption: '내용 수정',
                               color: Colors.blue,
-                              icon: Icons.photo,
-                              onTap: () {
-
-                              },
-                            ),
-                            IconSlideAction(
-                              caption: '새로운 사진',
-                              color: Colors.blueAccent,
-                              icon: Icons.camera_alt,
+                              icon: Icons.edit,
                               onTap: () {
 
                               },
@@ -104,7 +105,7 @@ class _MissionDetailState extends State<MissionDetail> {
                           ],
                           secondaryActions: <Widget>[
                             IconSlideAction(
-                              caption: 'Delete',
+                              caption: '삭제',
                               color: Colors.red,
                               icon: Icons.delete,
                               onTap: (){
@@ -160,6 +161,7 @@ class _MissionDetailState extends State<MissionDetail> {
                             actionPane: SlidableDrawerActionPane(),
                             actionExtentRatio: 0.25,
                             controller: _slidableController,
+
                             actions: <Widget>[
                               IconSlideAction(
                                 caption: '다른사진',
@@ -193,8 +195,8 @@ class _MissionDetailState extends State<MissionDetail> {
 
                             closeOnScroll: true,
                             child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 16.0),
+                              width: width * 0.9,
+                              margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20.0),
                                 child: InkWell(
@@ -202,7 +204,7 @@ class _MissionDetailState extends State<MissionDetail> {
                                     height: 200,
                                     placeholder: kTransparentImage,
                                     image: imageList[i],
-                                    fit: BoxFit.none,
+                                    fit: BoxFit.fitWidth,
                                   ),
                                   onTap: () {
                                     Navigator.push(context,
