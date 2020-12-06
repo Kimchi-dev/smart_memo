@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:smart_memo/src/ui/bottomNavBar/bottomNavChangeList.dart';
 
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavHome.dart';
 import 'package:smart_memo/src/ui/bottomNavBar/bottomNavSetting.dart';
@@ -45,7 +46,7 @@ class _Smart_memo_homeState extends State<Smart_memo_home> {
       child: BottomNavTodoList(),
     ),
     Center(
-      child: Text('3'),
+      child: BottomNavChangeList(),
     ),
     Center(
       child: BottomNavSetting(),

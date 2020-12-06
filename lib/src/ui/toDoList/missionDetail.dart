@@ -196,9 +196,9 @@ class _MissionDetailState extends State<MissionDetail> {
                             closeOnScroll: true,
                             child: Container(
                               width: width * 0.9,
-                              margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                              margin: EdgeInsets.only(left: 16.0,right: 16.0, top: 16.0),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(30.0),topRight: Radius.circular(30.0)),
                                 child: InkWell(
                                   child: FadeInImage.memoryNetwork(
                                     height: 200,
@@ -216,6 +216,51 @@ class _MissionDetailState extends State<MissionDetail> {
                               ),
                             ),
                           ),
+                        Slidable(
+                          actionPane: SlidableDrawerActionPane(),
+                          actionExtentRatio: 0.25,
+                          controller: _slidableController,
+                          actions: <Widget>[
+                            IconSlideAction(
+                              caption: '내용 수정',
+                              color: Colors.blue,
+                              icon: Icons.edit,
+                              onTap: () {
+
+                              },
+                            ),
+                          ],
+                          secondaryActions: <Widget>[
+                            IconSlideAction(
+                              caption: '삭제',
+                              color: Colors.red,
+                              icon: Icons.delete,
+                              onTap: (){
+                              },
+                            ),
+                          ],
+                          child: Container(
+                            padding:
+                            EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                            margin:
+                            EdgeInsets.symmetric(horizontal: 16.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30.0),bottomRight: Radius.circular(30.0)),
+                              color: HexColor("#e1e4ea"),
+                            ),
+                            child: Container(
+                              child: Text(
+                                '위 내용이 현재 처리 상태이며'
+                                '아직 별다른 반응 없음. 추가적으로 변경 사항이있을시 해당사진에 부연설명을 입력하겠습니다.',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 80,
+                        )
                       ],
                     ),
                   ],
